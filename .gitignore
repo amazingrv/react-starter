@@ -1,0 +1,11 @@
+dist
+logs
+*.log
+npm-debug.log*
+coverage
+node_modules/
+typings/
+.npm
+.eslintcache
+.env
+.env.test
