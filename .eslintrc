@@ -4,18 +4,27 @@
     "browser": true,
     "node": true
   },
-  "plugins": ["import", "jsx-a11y", "react", "unicorn", "react-hooks"],
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "prettier",
+    "unicorn",
+    "react-hooks"
+  ],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "prettier/prettier": "error"
   },
   "extends": [
     "airbnb",
     "plugin:unicorn/recommended",
-    "plugin:prettier/recommended",
+    "prettier",
     "prettier/react",
-    "prettier/standard"
+    "prettier/standard",
+    "prettier/unicorn"
   ]
 }
