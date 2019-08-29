@@ -10,6 +10,9 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'app-bundle.js',
   },
+  node: {
+    fs: 'empty',
+  },
   module: {
     rules: [
       {

@@ -1,24 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
-// Create a Title component that'll render an <h1> tag with some styles
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
+const HoverButton = tw.button`rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-teal-500 hover:bg-teal-600 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md`;
 
-// Create a Wrapper component that'll render a <section> tag with some styles
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
-
-// Use Title and Wrapper like any other React component – except they're styled!
 const Header = () => (
-  <Wrapper>
-    <Title>Hello World!</Title>
-  </Wrapper>
+  <div className="container mx-auto my-2">
+    <HoverButton>Styled Button!</HoverButton>
+  </div>
 );
 
 export default Header;
