@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app-bundle.js',
+    filename: 'bundle.js',
   },
   node: {
     fs: 'empty',
@@ -71,7 +71,7 @@ module.exports = {
       inject: true,
       filename: 'index.html',
     }),
-    new MiniCssExtractPlugin({ filename: 'app.css' }),
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new MomentLocalesPlugin(),
   ],
 };

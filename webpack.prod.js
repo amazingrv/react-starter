@@ -2,12 +2,21 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const merge = require('webpack-merge');
-const webpack = require('webpack');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
   optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\\/]node_modules[\\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
     minimizer: [
       new TerserPlugin({
         cache: true,
@@ -22,9 +31,6 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     new SimpleProgressWebpackPlugin({
       format: 'expanded',
     }),
