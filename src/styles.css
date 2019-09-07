@@ -1,1 +1,4 @@
-@import 'tailwindcss/tailwind';
+@import 'sanitize.css';
+@import 'sanitize.css/forms.css';
+@import 'sanitize.css/typography.css';
+@import 'bulma/css/bulma.css';

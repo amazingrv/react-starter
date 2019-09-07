@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import Header from './pages/header';
+import Header from './header/header';
 
 const root = document.querySelector('#root');
 
