@@ -23,6 +23,7 @@
         "useESModules": false
       }
     ],
+    "babel-plugin-styled-components",
     ["lodash", { "id": ["lodash", "recompose"] }]
   ]
 }
