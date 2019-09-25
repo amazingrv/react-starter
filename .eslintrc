@@ -18,7 +18,16 @@
     "react-hooks/exhaustive-deps": "warn",
     "no-console": "warn",
     "prettier/prettier": "error",
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ]
   },
   "extends": [
     "airbnb",

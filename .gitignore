@@ -9,3 +9,5 @@ typings/
 .eslintcache
 .env
 .env.test
+node/
+target/

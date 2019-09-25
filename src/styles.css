@@ -1,4 +1,2 @@
-@import 'sanitize.css';
-@import 'sanitize.css/forms.css';
-@import 'sanitize.css/typography.css';
-@import 'bulma/css/bulma.css';
+@import '~normalize.css/normalize.css';
+@import '~bulma/css/bulma.css';
