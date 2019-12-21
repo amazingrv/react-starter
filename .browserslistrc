@@ -1,4 +1,3 @@
-chrome>=52
-firefox>=59
+chrome>=68
+firefox>=62
 edge>=16
-ie 11

@@ -53,7 +53,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -63,12 +63,13 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
+          'sass-loader',
         ],
       },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   performance: {
     hints: false,

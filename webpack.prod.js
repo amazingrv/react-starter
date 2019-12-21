@@ -7,16 +7,6 @@ const common = require('./webpack.common');
 module.exports = merge(common, {
   mode: 'production',
   optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\\/]node_modules[\\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
     minimizer: [
       new TerserPlugin({
         cache: true,
