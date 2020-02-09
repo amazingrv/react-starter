@@ -23,8 +23,7 @@
       "error",
       {
         "cases": {
-          "camelCase": true,
-          "pascalCase": true
+          "camelCase": true
         }
       }
     ]
