@@ -1,6 +1,6 @@
 {
   "name": "react-config-starter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "react starter with exposed config",
   "scripts": {
     "build:dev": "webpack --config webpack.dev.js",
