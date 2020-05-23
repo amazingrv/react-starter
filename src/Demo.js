@@ -17,12 +17,8 @@ const Demo = () => (
     {/* A Switch looks through its children Routes and
             renders the first one that matches the current URL. */}
     <Switch>
-      <Route path="/about">
-        <About />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
+      <Route exact path="/about" component={About} />
+      <Route path="/" component={Home} />
     </Switch>
   </div>
 );

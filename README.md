@@ -1,4 +1,5 @@
-# react-config-starter
+# react-starter
+
 
 A Simple react starter kit with exposed config and hooks support.
 
@@ -16,14 +17,33 @@ Currently support config out-of-box:
 - friendly erros with formatted webpack output via plugins
 - lodash, momentjs and bulma added for fun
 
-## `npm install`
+## Building and running on localhost
 
-To install dependencies
+First install dependencies:
 
-## `npm start`
+```sh
+npm install
+```
 
-To start webpack development server at port **9060**
+To run in hot module reloading mode:
 
-## `npm run build`
+```sh
+npm start
+```
 
-To do a minified production build with all optimizations enabled
+To create a production build:
+
+```sh
+npm run build-prod
+```
+
+To create a development build:
+
+```sh
+npm run build-dev
+```
+
+## Running
+
+Open the file `dist/index.html` in your browser
+
