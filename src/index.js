@@ -1,15 +1,20 @@
+import './styles.css';
+
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
-import Demo from './Demo';
-import './styles.scss';
+import { Provider } from 'react-redux';
+import App from './app/App';
+import store from './redux/store';
 
-var mountNode = document.querySelector('#app');
+const mountNode = document.querySelector('#app');
 ReactDOM.render(
-  <HashRouter>
-    <Demo />
-  </HashRouter>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
   mountNode
 );

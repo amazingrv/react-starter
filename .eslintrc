@@ -1,13 +1,15 @@
 {
+  "parser": "babel-eslint",
   "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-param-reassign": "warn",
     "unicorn/prevent-abbreviations": "off",
+    "unicorn/import-index": ["error", { "ignoreImports": true }],
     "unicorn/filename-case": [
       "error",
       {
         "cases": {
+          "camelCase": true,
           "pascalCase": true
         }
       }
@@ -15,18 +17,18 @@
   },
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "sourceType": "module"
   },
   "extends": [
+    "airbnb",
+    "airbnb/hooks",
     "plugin:unicorn/recommended",
-    "prettier",
+    "plugin:prettier/recommended",
     "prettier/react",
     "prettier/standard",
     "prettier/unicorn"
@@ -34,11 +36,5 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
-  },
-  "plugins": [
-    "react",
-    "prettier",
-    "unicorn",
-    "react-hooks"
-  ]
+  }
 }
