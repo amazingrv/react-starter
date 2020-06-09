@@ -1,3 +1,4 @@
+const path = require('path');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -6,6 +7,12 @@ const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
+  entry: ['./src/index.js'],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: '[name].[contenthash].js',
+  },
   optimization: {
     minimizer: [
       new TerserPlugin({

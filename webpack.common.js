@@ -1,16 +1,9 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/index.js'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-  },
   module: {
     rules: [
       {
@@ -106,6 +99,5 @@ module.exports = {
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin(),
   ],
 };
