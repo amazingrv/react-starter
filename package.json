@@ -14,8 +14,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build:dev": "webpack --config webpack.dev.js",
     "build": "npm run build:prod",
+    "build:dev": "webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --hot --open"
   },

@@ -1,16 +1,13 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   entry: ['./src/index.js'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-  },
   module: {
     rules: [
       {
@@ -94,6 +91,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  stats: 'none',
   performance: {
     hints: false,
   },
@@ -108,5 +106,9 @@ module.exports = {
     new LodashModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
+    new SimpleProgressWebpackPlugin({
+      format: 'minimal',
+    }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };
