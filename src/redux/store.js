@@ -7,7 +7,11 @@ const reducer = {
   counter: counterReducer,
 };
 
-const middleware = [...getDefaultMiddleware(), logger];
+const middleware = [...getDefaultMiddleware()];
+
+if (process.env.NODE_ENV === 'development') {
+  middleware.push(logger);
+}
 
 const preloadedState = {};
 

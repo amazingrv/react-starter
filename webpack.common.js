@@ -102,6 +102,7 @@ module.exports = {
       template: './src/index.html',
       inject: true,
       filename: 'index.html',
+      minify: false,
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
