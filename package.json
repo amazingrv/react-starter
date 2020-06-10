@@ -14,10 +14,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "npm run build:prod",
-    "build:dev": "rimraf dist && webpack --mode development --config webpack.server.js",
-    "build:prod": "rimraf dist && webpack --mode production --config webpack.prod.js && webpack --mode production --config webpack.server.js",
-    "start": "npm run build:dev && node ./dist/server.js"
+    "start": "npm run build:dev && npm run server",
+    "server": "node ./dist/server.js",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run compile:server:prod && npm run compile:app:prod",
+    "build:dev": "npm run clean && npm run compile:server:dev",
+    "compile:server:dev": "webpack --mode development --config webpack.server.js",
+    "compile:server:prod": "webpack --mode production --config webpack.server.js",
+    "compile:app:prod": "webpack --mode production --config webpack.prod.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.3.6",

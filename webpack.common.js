@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   module: {
@@ -87,6 +89,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  stats: 'none',
   performance: {
     hints: false,
   },
@@ -100,5 +103,9 @@ module.exports = {
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
+    new SimpleProgressWebpackPlugin({
+      format: 'minimal',
+    }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };

@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-param-reassign": "warn",
+    "no-param-reassign": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/import-index": ["error", { "ignoreImports": true }],
     "unicorn/filename-case": [

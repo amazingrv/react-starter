@@ -13,10 +13,15 @@ const compiler = webpack(config);
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
+    logLevel: 'silent',
   })
 );
 
-app.use(webpackHotMiddleware(compiler));
+app.use(
+  webpackHotMiddleware(compiler, {
+    log: false,
+  })
+);
 
 app.get('*', (req, res, next) => {
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
@@ -29,7 +34,7 @@ app.get('*', (req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 9060;
+const PORT = 9060;
 
 app.listen(PORT, () => {
   console.log(`App listening to ${PORT}....`);
