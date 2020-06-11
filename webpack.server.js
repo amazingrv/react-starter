@@ -42,7 +42,7 @@ module.exports = (env, argv) => {
       }),
       new FriendlyErrorsWebpackPlugin(),
     ],
-    externals: [nodeExternals()], // Need this to avoid error when working with Express
+    externals: [process.env.NODE_ENV !== 'production' && nodeExternals()], // Need this to avoid error when working with Express
     module: {
       rules: [
         {
