@@ -20,10 +20,10 @@ module.exports = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new FriendlyErrorsWebpackPlugin(),
     new SimpleProgressWebpackPlugin({
       format: 'minimal',
     }),
+    new FriendlyErrorsWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
   ],
 });
