@@ -27,6 +27,7 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: process.env.NODE_ENV === 'development',
+              esModule: true,
             },
           },
           {
@@ -61,7 +62,7 @@ module.exports = {
         include: /\.module\.css$/,
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -73,7 +74,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         use: [
           {
             loader: 'file-loader',
