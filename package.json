@@ -21,6 +21,7 @@
     "build:dev": "npm run clean && npm run compile:server:dev",
     "compile:server:dev": "webpack --mode development --config webpack.server.js",
     "compile:server:prod": "webpack --mode production --config webpack.server.js",
+    "compile:app:dev": "webpack --mode development --config webpack.dev.js",
     "compile:app:prod": "webpack --mode production --config webpack.prod.js"
   },
   "dependencies": {
