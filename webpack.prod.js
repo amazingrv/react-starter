@@ -1,7 +1,9 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -13,6 +15,15 @@ module.exports = merge(common, {
   },
   devtool: false,
   optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
     minimizer: [
       new TerserPlugin({
         cache: true,
@@ -27,4 +38,10 @@ module.exports = merge(common, {
       }),
     ],
   },
+  plugins: [
+    new SimpleProgressWebpackPlugin({
+      format: 'expanded',
+    }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+  ],
 });

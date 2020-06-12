@@ -3,8 +3,6 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   entry: ['./src/index.js'],
@@ -30,7 +28,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: true,
+              hmr: process.env.NODE_ENV === 'development',
             },
           },
           {
@@ -49,7 +47,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: true,
+              hmr: process.env.NODE_ENV === 'development',
             },
           },
           {
@@ -64,7 +62,7 @@ module.exports = {
         include: /\.module\.css$/,
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -76,7 +74,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -91,24 +89,17 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  stats: 'none',
   performance: {
     hints: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      inject: true,
       filename: 'index.html',
       minify: false,
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
-    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
-    new SimpleProgressWebpackPlugin({
-      format: 'minimal',
-    }),
-    new FriendlyErrorsWebpackPlugin(),
   ],
 };
