@@ -12,6 +12,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
+          cache: true,
           fix: true,
         },
       },
@@ -27,7 +28,6 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: process.env.NODE_ENV === 'development',
-              esModule: true,
             },
           },
           {
@@ -47,7 +47,6 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: process.env.NODE_ENV === 'development',
-              esModule: true,
             },
           },
           {
@@ -67,7 +66,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: '[folder]/[name].[ext]',
+              name: 'images/[name].[ext]',
               limit: 8192,
             },
           },
@@ -79,7 +78,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[folder]/[name].[ext]',
+              name: 'fonts/[name].[ext]',
             },
           },
         ],
@@ -97,6 +96,7 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
       minify: false,
+      favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),

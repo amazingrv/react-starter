@@ -9,7 +9,11 @@ const common = require('./webpack.common');
 module.exports = merge(common, {
   mode: 'development',
   entry: {
-    main: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
+    main: [
+      'eventsource-polyfill',
+      'webpack-hot-middleware/client',
+      './src/index.js',
+    ],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -1,14 +1,22 @@
-import path from 'path';
-import express from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import config from '../webpack.dev';
+const path = require('path');
+const express = require('express');
+const helmet = require('helmet');
+const http = require('http');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('../webpack.dev.js');
 
 const app = express();
+const server = http.createServer(app);
+const port = process.env.PORT || '9060';
+const compiler = webpack(config);
 const DIST_DIR = __dirname;
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
-const compiler = webpack(config);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 
 app.use(
   webpackDevMiddleware(compiler, {
@@ -34,9 +42,7 @@ app.get('*', (req, res, next) => {
   });
 });
 
-const PORT = 9060;
-
-app.listen(PORT, () => {
-  console.log(`App listening to ${PORT}....`);
+server.listen(port, () => {
+  console.log(`App listening to ${port}....`);
   console.log('Press Ctrl+C to quit.');
 });

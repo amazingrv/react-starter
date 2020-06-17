@@ -4,6 +4,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -16,6 +17,7 @@ module.exports = merge(common, {
   },
   devtool: false,
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -42,6 +44,12 @@ module.exports = merge(common, {
   plugins: [
     new SimpleProgressWebpackPlugin({
       format: 'expanded',
+    }),
+    new CopyPlugin({
+      patterns: [
+        path.join(__dirname, 'server', 'server.prod.js'),
+        path.join(__dirname, 'server', 'package.json'),
+      ],
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],

@@ -1,15 +1,7 @@
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import logger from 'redux-logger';
-import counterReducer from './slices/counter.slice';
-
-const rootReducer = combineReducers({
-  counter: counterReducer,
-});
+import rootReducer from './rootReducer';
 
 const middleware = [...getDefaultMiddleware()];
 
@@ -26,6 +18,12 @@ const store = configureStore({
   preloadedState,
   enhancers: [],
 });
+
+if (module.hot) {
+  module.hot.accept('./rootReducer', () => {
+    store.replaceReducer(rootReducer);
+  });
+}
 
 // The store has been created with these options:
 // - The slice reducers were automatically passed to combineReducers()
