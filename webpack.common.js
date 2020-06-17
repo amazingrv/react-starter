@@ -14,6 +14,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
+          cache: true,
           fix: true,
         },
       },
