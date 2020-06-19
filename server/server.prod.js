@@ -1,23 +1,37 @@
-const path = require('path');
 const helmet = require('helmet');
+const path = require('path');
 const http = require('http');
 const express = require('express');
 const compression = require('compression');
+const ejs = require('ejs');
 
 const app = express();
 const server = http.createServer(app);
 const DIST_DIR = __dirname;
-const port = process.env.PORT || '9060';
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
+const port = process.env.PORT || '9060';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(compression());
-app.use(express.static(DIST_DIR));
+app.use(express.static(path.join(DIST_DIR, 'static')));
 
-app.get('*', (req, res) => {
-  res.sendFile(HTML_FILE);
+app.get('*', (req, res, next) => {
+  ejs.renderFile(
+    HTML_FILE,
+    {
+      htmlTitle: 'React Super!',
+    },
+    (err, htmlString) => {
+      if (err) {
+        return next(err);
+      }
+      res.set('content-type', 'text/html');
+      res.send(htmlString);
+      res.end();
+    }
+  );
 });
 
 server.listen(port, () => {

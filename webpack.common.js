@@ -1,7 +1,10 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+
+const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
   module: {
@@ -83,6 +86,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(html)$/i,
+        use: 'raw-loader',
+      },
     ],
   },
   resolve: {
@@ -94,7 +101,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html',
+      filename: path.join(DIST_DIR, 'index.html'),
       minify: false,
       favicon: './src/assets/favicon.ico',
     }),

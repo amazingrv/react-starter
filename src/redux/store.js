@@ -19,12 +19,6 @@ const store = configureStore({
   enhancers: [],
 });
 
-if (module.hot) {
-  module.hot.accept('./rootReducer', () => {
-    store.replaceReducer(rootReducer);
-  });
-}
-
 // The store has been created with these options:
 // - The slice reducers were automatically passed to combineReducers()
 // - redux-thunk and redux-logger were added as middleware

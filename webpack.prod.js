@@ -7,11 +7,14 @@ const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const common = require('./webpack.common');
 
+const DIST_DIR = path.join(__dirname, 'dist');
+const SERVER_DIR = path.join(__dirname, 'server');
+
 module.exports = merge(common, {
   mode: 'production',
   entry: ['./src/index.js'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(DIST_DIR, 'static'),
     publicPath: '/',
     filename: '[name].[contenthash].js',
   },
@@ -47,8 +50,8 @@ module.exports = merge(common, {
     }),
     new CopyPlugin({
       patterns: [
-        path.join(__dirname, 'server', 'server.prod.js'),
-        path.join(__dirname, 'server', 'package.json'),
+        { from: path.join(SERVER_DIR, 'server.prod.js'), to: DIST_DIR },
+        { from: path.join(SERVER_DIR, 'package.json'), to: DIST_DIR },
       ],
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
