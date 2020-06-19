@@ -10,11 +10,21 @@ import App from './app/App';
 import store from './redux/store';
 
 const mountNode = document.querySelector('#app');
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  mountNode
-);
+
+const render = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    mountNode
+  );
+};
+
+render();
+
+// webpack Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept();
+}

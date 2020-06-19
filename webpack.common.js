@@ -1,11 +1,17 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+
+const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
   entry: ['./src/index.js'],
+  output: {
+    path: DIST_DIR,
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
@@ -102,6 +108,5 @@ module.exports = {
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
   ],
 };
