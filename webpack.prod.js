@@ -14,8 +14,6 @@ module.exports = merge(common, {
   mode: 'production',
   entry: ['./src/index.js'],
   output: {
-    path: path.join(DIST_DIR, 'static'),
-    publicPath: '/',
     filename: '[name].[contenthash].js',
   },
   devtool: false,

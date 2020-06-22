@@ -7,6 +7,10 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
+  output: {
+    path: path.join(DIST_DIR, 'static'),
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
@@ -30,7 +34,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === 'development',
+              hmr: true,
             },
           },
           {
@@ -49,7 +53,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === 'development',
+              hmr: true,
             },
           },
           {
