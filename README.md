@@ -2,19 +2,18 @@
 
 A Simple react starter kit with exposed config and hooks support.
 
-> Awesomeness doesn't come easy
+Supports ReduxJS, eslint with airbnb lint rules, prettier and other best practices supported OOB
 
-Supports routing, styled-components, eslint, prettier and best practices in config OOB.
+Currently supported config:
 
-Currently support config out-of-box:
-
-- exposed configuration for full customization
+- exposed configuration for eslint, browserlint, babel, postcss etc.
 - browserlist support with postcss for autoprefixer
-- babel-preset-env, Core-JS 3 Polyfills and other most used plugins
-- styled-components and its babel-plugin preconfigured
-- webpack loaders for eslint, font and images etc
-- friendly erros with formatted webpack output via plugins
-- lodash, momentjs and bulma added for fun
+- babel-preset-env, Core-JS 3 Polyfills and other most used babel plugins
+- webpack loaders for eslint, font and images etc.
+- support for css 3 and css modules for scoped css
+- friendly erros with formatted webpack output via webpack plugins
+- lodash, momentjs and respective loaders for tree-shaking support
+- all optimizations applied to production build for minimum size with max performance.
 
 ## Building and running on localhost
 
@@ -33,13 +32,13 @@ npm start
 To create a production build:
 
 ```sh
-npm run build-prod
+npm run build
 ```
 
 To create a development build:
 
 ```sh
-npm run build-dev
+npm run build:dev
 ```
 
 ## Running
