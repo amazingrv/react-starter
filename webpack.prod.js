@@ -50,6 +50,7 @@ module.exports = merge(common, {
       patterns: [
         { from: path.join(SERVER_DIR, 'server.prod.js'), to: DIST_DIR },
         { from: path.join(SERVER_DIR, 'package.json'), to: DIST_DIR },
+        { from: path.join(SERVER_DIR, 'package-lock.json'), to: DIST_DIR },
       ],
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
