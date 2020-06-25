@@ -107,6 +107,7 @@ module.exports = {
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
       minify: false,
+      scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
