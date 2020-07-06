@@ -1,11 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import logger from 'redux-logger';
-import counterReducer from './slices/counter.slice';
-
-const reducer = {
-  counter: counterReducer,
-};
+import rootReducer from './rootReducer';
 
 const middleware = [...getDefaultMiddleware()];
 
@@ -16,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
 const preloadedState = {};
 
 const store = configureStore({
-  reducer,
+  reducer: rootReducer,
   middleware,
   devTools: process.env.NODE_ENV !== 'production',
   preloadedState,
