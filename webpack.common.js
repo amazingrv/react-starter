@@ -19,7 +19,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
-          cache: true,
           fix: true,
         },
       },
@@ -106,7 +105,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
-      minify: false,
       scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
     }),

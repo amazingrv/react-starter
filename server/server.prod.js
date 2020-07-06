@@ -23,6 +23,7 @@ app.get('*', (req, res, next) => {
     {
       htmlTitle: 'React Super!',
     },
+    // eslint-disable-next-line consistent-return
     (err, htmlString) => {
       if (err) {
         return next(err);

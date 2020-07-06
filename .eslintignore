@@ -1,4 +1,4 @@
 webpack*.js
 package*.json
 postcss*
-server/server*
+server*

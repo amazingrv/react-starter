@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const ejs = require('ejs');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../webpack.dev.js');
+const config = require('./webpack.dev.js');
 
 const app = express();
 const server = http.createServer(app);
@@ -33,7 +33,8 @@ app.use(
   })
 );
 
-app.use('*', function (req, res, next) {
+app.use('*', (req, res, next) => {
+  // eslint-disable-next-line consistent-return
   compiler.outputFileSystem.readFile(HTML_FILE, (err, buffer) => {
     if (err) {
       return next(err);
