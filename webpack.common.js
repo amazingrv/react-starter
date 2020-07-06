@@ -20,7 +20,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
-          cache: true,
           fix: true,
         },
       },
@@ -103,7 +102,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      minify: false,
       favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
