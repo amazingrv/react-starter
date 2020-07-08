@@ -23,7 +23,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "core-js": "^3.6.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -52,7 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint-plugin-react-hooks": "^4.0.6",
     "eslint-plugin-unicorn": "^20.1.0",
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -71,6 +71,6 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.0.7"
+    "webpack-merge": "^5.0.8"
   }
 }
