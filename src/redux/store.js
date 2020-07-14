@@ -1,11 +1,14 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { createLogger } from 'redux-logger';
 
-import logger from 'redux-logger';
 import rootReducer from './rootReducer';
 
 const middleware = [...getDefaultMiddleware()];
 
 if (process.env.NODE_ENV === 'development') {
+  const logger = createLogger({
+    collapsed: true,
+  });
   middleware.push(logger);
 }
 
