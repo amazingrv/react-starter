@@ -18,7 +18,7 @@
     "build": "npm run build:prod",
     "build:dev": "npm run clean && webpack --config webpack.dev.js",
     "build:prod": "npm run clean && webpack --config webpack.prod.js",
-    "start": "npm run clean && webpack-dev-server --config webpack.dev.js --hot --open"
+    "start": "npm run clean && webpack-dev-server --config webpack.dev.js --hot"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
@@ -39,7 +39,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
@@ -52,7 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.6",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "eslint-plugin-unicorn": "^20.1.0",
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -71,6 +71,6 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.0.8"
+    "webpack-merge": "^5.0.9"
   }
 }
