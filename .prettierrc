@@ -1,5 +1,5 @@
 {
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "jsxSingleQuote": false,
@@ -9,5 +9,5 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
-  "endOfLine": "lf"
+  "endOfLine": "auto"
 }

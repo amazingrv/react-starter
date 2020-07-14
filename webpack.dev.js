@@ -10,7 +10,7 @@ module.exports = merge(common, {
   entry: {
     main: [
       'eventsource-polyfill',
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?reload=true',
       './src/index.js',
     ],
   },
