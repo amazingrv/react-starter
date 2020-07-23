@@ -40,7 +40,7 @@ const Counter = () => {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={e => setIncrementAmount(e.target.value)}
+          onChange={event => setIncrementAmount(event.target.value)}
         />
         <button
           type="button"
