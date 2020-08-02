@@ -17,7 +17,7 @@ const preloadedState = {};
 const store = configureStore({
   reducer: rootReducer,
   middleware,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV === 'development',
   preloadedState,
   enhancers: [],
 });
