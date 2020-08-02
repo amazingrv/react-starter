@@ -33,6 +33,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
+              esModule: true,
               hmr: true,
             },
           },
@@ -52,6 +53,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
+              esModule: true,
               hmr: true,
             },
           },
