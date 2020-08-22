@@ -5,8 +5,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-//   .BundleAnalyzerPlugin;
 
 const common = require('./webpack.common');
 
@@ -52,6 +50,5 @@ module.exports = merge(common, {
       patterns: [{ from: SERVER_DIR, to: DIST_DIR }],
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-    // new BundleAnalyzerPlugin(),
   ],
 });

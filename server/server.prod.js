@@ -1,4 +1,3 @@
-const helmet = require('helmet');
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -13,7 +12,6 @@ const port = process.env.PORT || '9060';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(helmet());
 app.use(compression());
 app.use(express.static(path.join(DIST_DIR, 'static')));
 

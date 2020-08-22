@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const helmet = require('helmet');
 const http = require('http');
 const webpack = require('webpack');
 const ejs = require('ejs');
@@ -16,7 +15,6 @@ const HTML_FILE = path.join(compiler.outputPath, '..', 'index.html');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(helmet());
 
 app.use(
   webpackDevMiddleware(compiler, {
