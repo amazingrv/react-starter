@@ -3,7 +3,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const common = require('./webpack.common');
 
@@ -42,6 +41,5 @@ module.exports = merge(common, {
       format: 'expanded',
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-    // new BundleAnalyzerPlugin(),
   ],
 });
