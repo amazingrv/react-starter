@@ -3,7 +3,8 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-console": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-unused-vars": "warn"
   },
   "env": {
     "es6": true,
