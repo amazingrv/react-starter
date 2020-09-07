@@ -1,4 +1,5 @@
 {
+  "parser": "@babel/eslint-parser",
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": "off",
@@ -10,11 +11,8 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2019,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "requireConfigFile": false,
+    "sourceType": "module"
   },
   "extends": [
     "eslint:recommended",
