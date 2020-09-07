@@ -1,8 +1,6 @@
 {
-  "parser": "@babel/eslint-parser",
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-console": "warn",
     "react/prop-types": "off",
     "no-unused-vars": "warn"
   },
@@ -12,12 +10,19 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "extends": [
-    "airbnb",
-    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
     "prettier/react",
     "prettier/standard",
@@ -26,5 +31,21 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".json"]
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      { "property": "freeze", "object": "Object" }
+    ],
+    "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
   }
 }
