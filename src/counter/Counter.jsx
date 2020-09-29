@@ -9,86 +9,63 @@ import {
   incrementAsync,
   selectCount,
 } from '../redux/slices/counter.slice';
+import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
-const Counter = () => {
+export default function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <div>
-      <div className="field is-grouped" style={{ justifyContent: 'center' }}>
-        <div className="control">
-          <button
-            type="button"
-            className="button is-primary is-large"
-            aria-label="Increment value"
-            onClick={() => dispatch(increment())}
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faPlusCircle} />
-            </span>
-          </button>
+      <div className="form-inline justify-content-center">
+        <Button
+          color="success"
+          size="small"
+          onClick={() => dispatch(increment())}
+        >
+          <FontAwesomeIcon icon={faPlusCircle} />
+        </Button>
+        <div>
+          <h2 style={{ minWidth: '120px' }}>{count}</h2>
         </div>
-        <div className="control">
-          <h2 className="title is-1" style={{ minWidth: '120px' }}>
-            {count}
-          </h2>
-        </div>
-        <div className="control">
-          <button
-            type="button"
-            className="button is-primary is-large"
-            aria-label="Decrement value"
-            onClick={() => dispatch(decrement())}
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faMinusCircle} />
-            </span>
-          </button>
-        </div>
+        <Button
+          color="danger"
+          size="small"
+          onClick={() => dispatch(decrement())}
+        >
+          <FontAwesomeIcon icon={faMinusCircle} />
+        </Button>
       </div>
-      <div className="field is-grouped" style={{ justifyContent: 'center' }}>
-        <div className="control">
-          <input
+      <div className="form-inline justify-content-center">
+        <InputGroup>
+          <Input
             type="number"
-            aria-label="Set increment amount"
             value={incrementAmount}
-            className="input"
             onChange={event => setIncrementAmount(event.target.value)}
           />
-        </div>
-        <div className="control">
-          <button
-            type="button"
-            className="button is-info"
-            onClick={() =>
-              dispatch(incrementByAmount(Number(incrementAmount) || 0))
-            }
-          >
-            <span className="icon mr-1">
-              <FontAwesomeIcon icon={faPlusCircle} />
-            </span>
-            Add Amount
-          </button>
-        </div>
-        <div className="control">
-          <button
-            type="button"
-            className="button is-info"
-            onClick={() =>
-              dispatch(incrementAsync(Number(incrementAmount) || 0))
-            }
-          >
-            <span className="icon mr-1">
-              <FontAwesomeIcon icon={faPlusCircle} />
-            </span>
-            Add Async
-          </button>
-        </div>
+          <InputGroupAddon addonType="append">
+            <Button
+              color="primary"
+              onClick={() =>
+                dispatch(incrementByAmount(Number(incrementAmount) || 0))
+              }
+            >
+              Add
+            </Button>
+          </InputGroupAddon>
+          <InputGroupAddon addonType="append">
+            <Button
+              color="primary"
+              onClick={() =>
+                dispatch(incrementAsync(Number(incrementAmount) || 0))
+              }
+            >
+              Add Async
+            </Button>
+          </InputGroupAddon>
+        </InputGroup>
       </div>
     </div>
   );
-};
-
-export default Counter;
+}
