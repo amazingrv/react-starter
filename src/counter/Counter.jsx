@@ -8,11 +8,19 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
+  selectLoading,
 } from '../redux/slices/counter.slice';
-import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import {
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Spinner,
+} from 'reactstrap';
 
 const Counter = () => {
   const count = useSelector(selectCount);
+  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
@@ -61,7 +69,7 @@ const Counter = () => {
                 dispatch(incrementAsync(Number(incrementAmount) || 0))
               }
             >
-              Add Async
+              Add Async {loading && <Spinner size="sm" color="light" />}
             </Button>
           </InputGroupAddon>
         </InputGroup>
