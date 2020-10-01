@@ -9,7 +9,7 @@ import {
   incrementAsync,
   selectCount,
   selectLoading,
-} from '../redux/slices/counter.slice';
+} from '../../redux/slices/counter.slice';
 import {
   Button,
   Input,

@@ -6,15 +6,18 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './app/App';
 import store from './redux/store';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
 
 const mountNode = document.querySelector('#app');
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   mountNode

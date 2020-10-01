@@ -1,7 +1,7 @@
-import './app.css';
+import './Home.css';
 
 import React from 'react';
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 import Counter from '../counter/Counter';
 import { Jumbotron } from 'reactstrap';
 
@@ -13,7 +13,7 @@ export default function App() {
   ];
 
   return (
-    <div className="container-fluid text-center">
+    <div className="text-center">
       <img src={logo} className="logo title" alt="logo" />
       <Jumbotron fluid>
         <h1 className="display-3">Hello, React!</h1>
@@ -38,9 +38,9 @@ export default function App() {
             </a>
           ))}
         </p>
-        <p className="lead">
+        <div className="lead">
           <Counter />
-        </p>
+        </div>
       </Jumbotron>
     </div>
   );
