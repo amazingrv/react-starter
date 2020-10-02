@@ -1,13 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import Axios from 'axios';
 import Home from './components/home/Home';
 import DataTable from './components/DataTable/DataTable';
 
 const Routes = ({ location }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [response, setResponse] = useState([]);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const columns = [
+    {
+      header: 'Post #',
+      key: 'postId',
+    },
+    {
+      header: 'Name',
+      key: 'name',
+    },
+    {
+      header: 'Email',
+      key: 'email',
+    },
+  ];
+
+  useEffect(() => {
+    Axios.get('https://jsonplaceholder.typicode.com/comments')
+      .then(response => {
+        setResponse(response.data.slice(0, 50));
+      })
+      .catch(() => {
+        setResponse([]);
+      });
+  }, []);
 
   return (
     <div>
@@ -46,7 +73,18 @@ const Routes = ({ location }) => {
 
       <div className="container">
         <Switch>
-          <Route exact path="/table" component={DataTable} />
+          <Route
+            exact
+            path="/table"
+            render={props => (
+              <DataTable
+                {...props}
+                data={response}
+                columns={columns}
+                idKey="id"
+              />
+            )}
+          />
           <Route path="/" component={Home} />
         </Switch>
       </div>
