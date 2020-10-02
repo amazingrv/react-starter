@@ -8,7 +8,7 @@ import {
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const DataTable = ({ data, columns, idKey }) => {
+function DataTable({ data, columns, idKey }) {
   const pageSizeOptions = [5, 10, 25, 50];
   const [pageSize, setPageSize] = useState(pageSizeOptions[0]);
   const [items, setItems] = useState([]);
@@ -65,7 +65,7 @@ const DataTable = ({ data, columns, idKey }) => {
     setCurrent(number);
   };
 
-  const genRowData = (items, columns, idKey) => {
+  const genRowData = () => {
     const elements = [];
     for (const item of items) {
       const rowData = [];
@@ -79,23 +79,88 @@ const DataTable = ({ data, columns, idKey }) => {
     return elements;
   };
 
-  const genPaginationRows = (current, pages) => {
-    const elements = [];
-    for (let i = current, j = 1; i <= pages && j <= 3; i++, j++) {
+  const genPaginationRows = () => {
+    const maxButtonsOnOneSide = 4;
+    const left = [];
+    const center = [];
+    const right = [];
+
+    const pagesOnLeft = current - first;
+    const pagesOnRight = last - current;
+    let countLeft = 0;
+    let countRight = 0;
+
+    if (pagesOnLeft > 0 && pagesOnRight === 0) {
+      if (pagesOnLeft > maxButtonsOnOneSide) {
+        countLeft = maxButtonsOnOneSide;
+      } else if (pagesOnLeft >= 2) {
+        countLeft = 2;
+      } else {
+        countLeft = 1;
+      }
+    } else if (pagesOnRight > 0 && pagesOnLeft === 0) {
+      if (pagesOnRight > maxButtonsOnOneSide) {
+        countRight = maxButtonsOnOneSide;
+      } else if (pagesOnRight > 2) {
+        countRight = 2;
+      } else {
+        countRight = 1;
+      }
+    } else if (pagesOnLeft >= 2 && pagesOnRight >= 2) {
+      countLeft = 2;
+      countRight = 2;
+    } else if (pagesOnLeft > 2 && pagesOnRight > 0) {
+      countLeft = maxButtonsOnOneSide - 1;
+      countRight = 1;
+    } else if (pagesOnLeft > 0 && pagesOnRight > 2) {
+      countLeft = 1;
+      countRight = maxButtonsOnOneSide - 1;
+    }
+
+    if (current > 0) {
+      for (let i = current - 1, j = 1; i >= first && j <= countLeft; i--, j++) {
+        const element = (
+          <li key={i} className="page-item">
+            <button
+              type="button"
+              className="page-link"
+              onClick={() => onClickNumber(i)}
+            >
+              {i}
+            </button>
+          </li>
+        );
+        left.splice(0, 0, element);
+      }
       const element = (
-        <li key={i} className={`page-item ${current === i ? 'active' : ''}`}>
+        <li key={current} className="page-item active">
           <button
             type="button"
             className="page-link"
-            onClick={() => onClickNumber(i)}
+            onClick={() => onClickNumber(current)}
           >
-            {i}
+            {current}
           </button>
         </li>
       );
-      elements.push(element);
+      center.push(element);
+      for (let i = current + 1, j = 1; i <= last && j <= countRight; i++, j++) {
+        const element = (
+          <li key={i} className="page-item">
+            <button
+              type="button"
+              className="page-link"
+              onClick={() => onClickNumber(i)}
+            >
+              {i}
+            </button>
+          </li>
+        );
+        right.push(element);
+      }
     }
-    return elements;
+
+    return [...left, ...center, ...right];
   };
 
   return (
@@ -109,7 +174,7 @@ const DataTable = ({ data, columns, idKey }) => {
               ))}
             </tr>
           </thead>
-          <tbody>{genRowData(items, columns, idKey)}</tbody>
+          <tbody>{genRowData()}</tbody>
         </table>
       </div>
       <div className="d-flex mt-2">
@@ -154,7 +219,7 @@ const DataTable = ({ data, columns, idKey }) => {
                   <FontAwesomeIcon icon={faAngleLeft} />
                 </button>
               </li>
-              {genPaginationRows(current, last)}
+              {genPaginationRows()}
               <li className={`page-item ${current === last ? 'disabled' : ''}`}>
                 <button
                   type="button"
@@ -181,6 +246,6 @@ const DataTable = ({ data, columns, idKey }) => {
       </div>
     </div>
   );
-};
+}
 
-export default DataTable;
+export default React.memo(DataTable);
