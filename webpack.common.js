@@ -1,15 +1,11 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-
-const DIST_DIR = path.join(__dirname, 'dist');
+const GhostProgressWebpackPlugin = require('ghost-progress-webpack-plugin')
+  .GhostProgressPlugin;
 
 module.exports = {
-  entry: ['./src/index.js'],
   output: {
-    path: DIST_DIR,
     publicPath: '/',
   },
   module: {
@@ -34,13 +30,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-              hmr: true,
-            },
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -54,13 +44,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-              hmr: true,
-            },
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -103,14 +87,16 @@ module.exports = {
   performance: {
     hints: false,
   },
+  stats: {
+    colors: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html',
       scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
-    new LodashModuleReplacementPlugin(),
+    new GhostProgressWebpackPlugin(),
   ],
 };
