@@ -7,15 +7,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import App from './app/App';
+import { HashRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
 
 const mountNode = document.querySelector('#app');
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <Routes />
+    </Router>
+  </Provider>,
   mountNode
 );
+
+// webpack Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept();
+}

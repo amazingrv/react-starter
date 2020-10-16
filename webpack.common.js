@@ -1,8 +1,10 @@
 const path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const GhostProgressWebpackPlugin = require('ghost-progress-webpack-plugin')
+  .GhostProgressPlugin;
 
 const DIST_DIR = path.join(__dirname, 'dist');
 
@@ -14,15 +16,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-        },
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -33,13 +26,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-              hmr: true,
-            },
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -53,13 +40,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-              hmr: true,
-            },
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -101,12 +82,17 @@ module.exports = {
     ],
   },
   resolve: {
+    fallback: { url: false },
     extensions: ['.js', '.jsx'],
   },
   performance: {
     hints: false,
   },
+  stats: {
+    colors: true,
+  },
   plugins: [
+    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
@@ -114,6 +100,6 @@ module.exports = {
       favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
-    new LodashModuleReplacementPlugin(),
+    new GhostProgressWebpackPlugin(),
   ],
 };

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const ejs = require('ejs');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.dev.js');
+const config = require('../webpack.dev.js');
 
 const app = express();
 const server = http.createServer(app);
