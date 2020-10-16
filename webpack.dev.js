@@ -5,13 +5,15 @@ const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'development',
+  target: 'web',
   output: {
     filename: '[name].js',
   },
   devtool: 'source-map',
   devServer: {
-    // port: 9060,
+    port: 9060,
     publicPath: '/',
+    quiet: true,
     open: true,
   },
   plugins: [

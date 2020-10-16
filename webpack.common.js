@@ -1,3 +1,4 @@
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
@@ -10,15 +11,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-        },
-      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -91,6 +83,7 @@ module.exports = {
     colors: true,
   },
   plugins: [
+    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       scriptLoading: 'defer',
