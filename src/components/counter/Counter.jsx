@@ -10,13 +10,7 @@ import {
   selectCount,
   selectLoading,
 } from '../../redux/slices/counter.slice';
-import {
-  Button,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Spinner,
-} from 'reactstrap';
+import { Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 
 const Counter = () => {
   const count = useSelector(selectCount);
@@ -28,7 +22,7 @@ const Counter = () => {
     <div>
       <div className="form-inline justify-content-center">
         <Button
-          color="success"
+          variant="success"
           size="small"
           onClick={() => dispatch(increment())}
         >
@@ -38,7 +32,7 @@ const Counter = () => {
           <h2 style={{ minWidth: '120px' }}>{count}</h2>
         </div>
         <Button
-          color="danger"
+          variant="danger"
           size="small"
           onClick={() => dispatch(decrement())}
         >
@@ -47,31 +41,34 @@ const Counter = () => {
       </div>
       <div className="form-inline justify-content-center">
         <InputGroup>
-          <Input
+          <Form.Control
             type="number"
             value={incrementAmount}
             onChange={event => setIncrementAmount(event.target.value)}
           />
-          <InputGroupAddon addonType="append">
+          <InputGroup.Append>
             <Button
-              color="primary"
+              variant="primary"
               onClick={() =>
                 dispatch(incrementByAmount(Number(incrementAmount) || 0))
               }
             >
               Add
             </Button>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
+          </InputGroup.Append>
+          <InputGroup.Append>
             <Button
-              color="primary"
+              variant="primary"
               onClick={() =>
                 dispatch(incrementAsync(Number(incrementAmount) || 0))
               }
             >
-              Add Async {loading && <Spinner size="sm" color="light" />}
+              Add Async{' '}
+              {loading && (
+                <Spinner size="sm" animation="border" variant="light" />
+              )}
             </Button>
-          </InputGroupAddon>
+          </InputGroup.Append>
         </InputGroup>
       </div>
     </div>

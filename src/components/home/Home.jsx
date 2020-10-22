@@ -2,7 +2,7 @@ import './Home.css';
 
 import logo from '../../assets/logo.svg';
 import Counter from '../counter/Counter';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron } from 'react-bootstrap';
 
 export default function App() {
   const linkContent = [

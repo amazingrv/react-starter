@@ -6,7 +6,7 @@ import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
 
 const mountNode = document.querySelector('#app');
@@ -19,8 +19,3 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
-
-// webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept();
-}

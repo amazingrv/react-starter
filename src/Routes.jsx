@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import Axios from 'axios';
 import Home from './components/home/Home';
 import DataTable from './components/DataTable/DataTable';
 
 const Routes = ({ location }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [response, setResponse] = useState([]);
-
-  const toggle = () => setIsOpen(!isOpen);
 
   const columns = [
     {
@@ -38,37 +35,39 @@ const Routes = ({ location }) => {
 
   return (
     <div>
-      <Navbar className="container mb-2" color="light" light expand="md">
-        <Link
-          className="navbar-brand"
-          replace={'/' === location.pathname}
-          to="/"
-        >
-          ReactJS
-        </Link>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <Link
-                className="nav-link"
-                replace={'/' === location.pathname}
-                to="/"
-              >
-                Home
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link
-                className="nav-link"
-                replace={'/table' === location.pathname}
-                to="/table"
-              >
-                DataTable
-              </Link>
-            </NavItem>
-          </Nav>
-        </Collapse>
+      <Navbar className="mb-2" bg="light" variant="light" expand="md">
+        <Container>
+          <Link
+            className="navbar-brand"
+            replace={'/' === location.pathname}
+            to="/"
+          >
+            ReactJS
+          </Link>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Nav className="mr-auto">
+              <Nav.Item>
+                <Link
+                  className="nav-link"
+                  replace={'/' === location.pathname}
+                  to="/"
+                >
+                  Home
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link
+                  className="nav-link"
+                  replace={'/table' === location.pathname}
+                  to="/table"
+                >
+                  DataTable
+                </Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
 
       <div className="container">

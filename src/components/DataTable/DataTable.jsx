@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react';
-import { Input } from 'reactstrap';
+import { Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleLeft,
@@ -179,8 +179,8 @@ function DataTable({ data, columns, idKey }) {
       </div>
       <div className="d-flex mt-2">
         <div className="d-flex">
-          <Input
-            type="select"
+          <Form.Control
+            as="select"
             name="pageSize"
             onChange={onSelect}
             value={pageSize}
@@ -190,7 +190,7 @@ function DataTable({ data, columns, idKey }) {
                 {i}
               </option>
             ))}
-          </Input>
+          </Form.Control>
         </div>
         <div className="d-flex ml-auto">
           <nav aria-label="Page navigation example">
