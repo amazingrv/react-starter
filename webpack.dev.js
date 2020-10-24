@@ -13,8 +13,9 @@ module.exports = merge(common, {
   devServer: {
     port: 9060,
     publicPath: '/',
+    historyApiFallback: true,
+    overlay: true,
     quiet: true,
-    open: true,
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),

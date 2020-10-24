@@ -19,3 +19,8 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
+
+//Webpack HMR
+if (module.hot) {
+  module.hot.accept();
+}
