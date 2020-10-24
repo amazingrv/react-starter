@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express');
 const compression = require('compression');
 const ejs = require('ejs');
+const properties = require('./properties');
 
 const app = express();
 const server = http.createServer(app);
@@ -18,9 +19,7 @@ app.use(express.static(path.join(DIST_DIR, 'static')));
 app.get('*', (req, res, next) => {
   ejs.renderFile(
     HTML_FILE,
-    {
-      htmlTitle: 'React Super!',
-    },
+    properties,
     // eslint-disable-next-line consistent-return
     (err, htmlString) => {
       if (err) {

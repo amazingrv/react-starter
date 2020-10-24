@@ -6,6 +6,7 @@ const ejs = require('ejs');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../webpack.dev.js');
+const properties = require('./properties');
 
 const app = express();
 const server = http.createServer(app);
@@ -38,9 +39,7 @@ app.use('*', (req, res, next) => {
       return next(err);
     }
 
-    const htmlString = ejs.render(buffer.toString('utf8'), {
-      htmlTitle: 'React Super!',
-    });
+    const htmlString = ejs.render(buffer.toString('utf8'), properties);
     res.set('content-type', 'text/html');
     res.send(htmlString);
     res.end();
