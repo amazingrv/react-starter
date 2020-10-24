@@ -92,12 +92,13 @@ module.exports = {
     colors: true,
   },
   plugins: [
-    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
+    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'] }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
       scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
+      minify: false,
     }),
     new MomentLocalesPlugin(),
     new GhostProgressWebpackPlugin(),

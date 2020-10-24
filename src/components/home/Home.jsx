@@ -1,6 +1,5 @@
 import './Home.css';
 
-import React from 'react';
 import logo from '../../assets/logo.svg';
 import Counter from '../counter/Counter';
 import { Jumbotron } from 'reactstrap';

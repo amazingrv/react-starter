@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -248,4 +248,4 @@ function DataTable({ data, columns, idKey }) {
   );
 }
 
-export default React.memo(DataTable);
+export default memo(DataTable);
