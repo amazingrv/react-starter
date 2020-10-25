@@ -2,7 +2,7 @@
 
 A Simple react starter kit with exposed config and hooks support (for Node version 10.13 and above).
 
-Supports ReduxJS, eslint with airbnb lint rules, prettier and other best practices supported OOB
+Supports ReduxJS, eslint with recommended lint rules, prettier and other best practices supported OOB
 
 Currently supported config:
 
@@ -23,7 +23,7 @@ First install dependencies:
 npm install
 ```
 
-To run in hot module reloading mode:
+To run in hot reloading mode using webpack-dev-server:
 
 ```sh
 npm start
