@@ -1,8 +1,8 @@
-# react-starter ![Node CI](https://github.com/amazingrv/react-starter/workflows/Node%20CI/badge.svg)
+# react-starter ![Node CI](https://github.com/amazingrv/react-starter/workflows/Node%20CI/badge.svg?branch=master)
 
 A Simple react starter kit with exposed config and hooks support (for Node version 10.13 and above).
 
-Supports ReduxJS, eslint with recommended lint rules, prettier and other best practices supported OOB
+Supports client-side routing, ReduxJS, eslint with recommended lint rules, prettier and other best practices supported OOB
 
 Currently supported config:
 
