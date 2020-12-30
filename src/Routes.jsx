@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import Axios from 'axios';
 import Home from './components/home/Home';
 import DataTable from './components/DataTable/DataTable';
 
@@ -24,11 +23,20 @@ const Routes = ({ location }) => {
   ];
 
   useEffect(() => {
-    Axios.get('https://jsonplaceholder.typicode.com/comments')
+    fetch('https://jsonplaceholder.typicode.com/comments')
       .then(response => {
-        setResponse(response.data.slice(0, 50));
+        if (response.status === 200) {
+          return response;
+        } else {
+          const error = new Error(response.statusText);
+          error.response = response;
+          throw error;
+        }
       })
-      .catch(() => {
+      .then(response => response.json())
+      .then(data => setResponse(data.slice(0, 50)))
+      .catch(error => {
+        console.error(error);
         setResponse([]);
       });
   }, []);
