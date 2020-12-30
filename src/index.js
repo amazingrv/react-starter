@@ -2,6 +2,7 @@ import './styles.css';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import 'whatwg-fetch';
 
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -19,8 +20,3 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
-
-//Webpack HMR
-if (module.hot) {
-  module.hot.accept();
-}
