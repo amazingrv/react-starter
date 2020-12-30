@@ -5,17 +5,22 @@ const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'development',
-  target: 'web',
+  target: 'browserslist',
   output: {
     filename: '[name].js',
   },
   devtool: 'source-map',
   devServer: {
+    dev: {
+      publicPath: '/',
+    },
     port: 9060,
-    publicPath: '/',
+    open: true,
     historyApiFallback: true,
-    overlay: true,
-    quiet: true,
+    host: 'localhost',
+  },
+  infrastructureLogging: {
+    level: 'none',
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
