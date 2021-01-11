@@ -2,8 +2,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const GhostProgressWebpackPlugin = require('ghost-progress-webpack-plugin')
-  .GhostProgressPlugin;
+const ProgressPlugin = require('progress-webpack-plugin');
 
 module.exports = {
   output: {
@@ -91,6 +90,6 @@ module.exports = {
       minify: false,
     }),
     new MomentLocalesPlugin(),
-    new GhostProgressWebpackPlugin(),
+    new ProgressPlugin(),
   ],
 };
