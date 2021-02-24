@@ -27,7 +27,7 @@
         "@reduxjs/toolkit": "^1.5.0",
         "bootstrap": "^4.6.0",
         "core-js": "^3.9.0",
-        "lodash": "^4.17.20",
+        "lodash": "^4.17.21",
         "moment": "^2.29.1",
         "prop-types": "^15.7.2",
         "react": "^17.0.1",
