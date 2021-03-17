@@ -3,11 +3,9 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: daily
-    time: "23:30"
+    interval: weekly
 
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
-    interval: daily
-    time: "23:30"
+    interval: weekly
