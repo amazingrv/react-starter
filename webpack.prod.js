@@ -13,10 +13,11 @@ module.exports = merge(common, {
     devtool: false,
     optimization: {
         splitChunks: {
-            chunks: 'all',
             cacheGroups: {
-                defaultVendors: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
+                    chunks: 'all',
                 },
             },
         },

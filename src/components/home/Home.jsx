@@ -1,4 +1,4 @@
-import './Home.css';
+import './Home.scss';
 
 import logo from '../../assets/logo.svg';
 import Counter from '../counter/Counter';

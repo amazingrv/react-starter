@@ -4,11 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const ProgressPlugin = require('progress-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
 
 module.exports = {
     output: {
         publicPath: '/',
-        assetModuleFilename: 'images/[hash][ext][query]',
     },
     module: {
         rules: [
@@ -34,6 +35,20 @@ module.exports = {
                 ],
             },
             {
+                test: /\.s[ac]ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                        },
+                    },
+                    'postcss-loader',
+                    'sass-loader',
+                ],
+            },
+            {
                 test: /\.(png|jpg|gif)$/i,
                 type: 'asset/resource',
             },
@@ -44,14 +59,14 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
-                generator: {
-                    filename: 'fonts/[name][ext]',
-                },
             },
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        alias: {
+            lodash: 'lodash-es',
+        },
+        extensions: ['.js', '.jsx', '.json'],
     },
     performance: {
         hints: false,
@@ -60,7 +75,7 @@ module.exports = {
         colors: true,
     },
     plugins: [
-        new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'] }),
+        new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             scriptLoading: 'defer',
@@ -70,5 +85,6 @@ module.exports = {
         new MomentLocalesPlugin(),
         new LodashModuleReplacementPlugin(),
         new ProgressPlugin(),
+        new BundleAnalyzerPlugin(),
     ],
 };
