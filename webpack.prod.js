@@ -5,37 +5,35 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
-    mode: 'production',
-    target: 'browserslist',
-    output: {
-        filename: '[name].[contenthash].js',
-    },
-    devtool: false,
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
+  mode: 'production',
+  target: 'browserslist',
+  output: {
+    filename: '[name].[contenthash].js',
+  },
+  devtool: false,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
         },
-        minimizer: [
-            new TerserPlugin(),
-            new CssMinimizerPlugin({
-                minimizerOptions: {
-                    preset: [
-                        'default',
-                        {
-                            discardComments: { removeAll: true },
-                        },
-                    ],
-                },
-            }),
-        ],
+      },
     },
-    plugins: [
-        new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
     ],
+  },
+  plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
 });
