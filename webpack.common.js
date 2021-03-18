@@ -64,7 +64,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      lodash: 'lodash-es',
+      'lodash-es': 'lodash',
     },
     extensions: ['.js', '.jsx', '.json'],
   },
