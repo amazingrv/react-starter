@@ -3,10 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const ProgressPlugin = require('progress-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
     output: {
         publicPath: '/',
+        assetModuleFilename: 'images/[hash][ext][query]',
     },
     module: {
         rules: [
@@ -30,45 +32,21 @@ module.exports = {
                     },
                     'postcss-loader',
                 ],
-                exclude: /\.module\.css$/,
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: true,
-                        },
-                    },
-                    'postcss-loader',
-                ],
-                include: /\.module\.css$/,
+                test: /\.(png|jpg|gif)$/i,
+                type: 'asset/resource',
             },
             {
-                test: /\.(png|svg|jpg|gif)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            name: 'images/[name].[ext]',
-                            limit: 8192,
-                        },
-                    },
-                ],
+                test: /\.(svg)$/i,
+                type: 'asset/inline',
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'fonts/[name].[ext]',
-                        },
-                    },
-                ],
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]',
+                },
             },
         ],
     },
@@ -90,6 +68,7 @@ module.exports = {
             minify: false,
         }),
         new MomentLocalesPlugin(),
+        new LodashModuleReplacementPlugin(),
         new ProgressPlugin(),
     ],
 };

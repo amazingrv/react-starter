@@ -5,7 +5,8 @@
             {
                 "useBuiltIns": "entry",
                 "corejs": "3.9",
-                "bugfixes": true
+                "bugfixes": true,
+                "modules": false
             }
         ],
         [
