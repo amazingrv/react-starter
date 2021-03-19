@@ -85,6 +85,6 @@ module.exports = {
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
     new ProgressPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
