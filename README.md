@@ -1,4 +1,4 @@
-# react-starter ![Node CI](https://github.com/amazingrv/react-starter/workflows/Node%20CI/badge.svg?branch=master)
+# react-starter [![Node CI](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml/badge.svg)](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml)
 
 A Simple react starter kit with exposed config and hooks support (for Node version 10.13 and above).
 
