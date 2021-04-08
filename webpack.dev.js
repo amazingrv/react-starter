@@ -19,6 +19,7 @@ module.exports = merge(common, {
     historyApiFallback: true,
     host: 'localhost',
   },
+  stats: 'none',
   infrastructureLogging: {
     level: 'none',
   },
