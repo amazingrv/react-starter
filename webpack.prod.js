@@ -8,7 +8,7 @@ module.exports = merge(common, {
   mode: 'production',
   target: 'browserslist',
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'js/[name].[contenthash].js',
   },
   devtool: false,
   optimization: {
@@ -22,18 +22,20 @@ module.exports = merge(common, {
       },
     },
     minimizer: [
-      new TerserPlugin(),
+      new TerserPlugin({
+        extractComments: false,
+      }),
       new CssMinimizerPlugin({
         minimizerOptions: {
-          preset: [
-            'default',
-            {
-              discardComments: { removeAll: true },
-            },
-          ],
+          preset: 'default',
         },
       }),
     ],
   },
-  plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
+  ],
 });

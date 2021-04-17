@@ -7,7 +7,7 @@ module.exports = merge(common, {
   mode: 'development',
   target: 'browserslist',
   output: {
-    filename: '[name].js',
+    filename: 'js/[name].js',
   },
   devtool: 'source-map',
   devServer: {
@@ -25,6 +25,9 @@ module.exports = merge(common, {
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 });
