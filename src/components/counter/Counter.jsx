@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 import {
   decrement,
   increment,
@@ -10,7 +11,6 @@ import {
   selectCount,
   selectLoading,
 } from '../../redux/slices/counter.slice';
-import { Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 
 const Counter = () => {
   const count = useSelector(selectCount);
@@ -44,7 +44,7 @@ const Counter = () => {
           <Form.Control
             type="number"
             value={incrementAmount}
-            onChange={(event) => setIncrementAmount(event.target.value)}
+            onChange={event => setIncrementAmount(event.target.value)}
           />
           <InputGroup.Append>
             <Button

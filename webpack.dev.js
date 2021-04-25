@@ -20,9 +20,6 @@ module.exports = merge(common, {
     host: 'localhost',
   },
   stats: 'none',
-  infrastructureLogging: {
-    level: 'none',
-  },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
     new MiniCssExtractPlugin({

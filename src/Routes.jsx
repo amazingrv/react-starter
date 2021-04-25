@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import Home from './components/home/Home';
-import DataTable from './components/DataTable/DataTable';
+import axios from 'axios';
+
+const Home = React.lazy(() => import('./components/home/Home'));
+const DataTable = React.lazy(() => import('./components/DataTable/DataTable'));
 
 const Routes = ({ location }) => {
-  const [response, setResponse] = useState([]);
+  const [data, setData] = useState([]);
 
   const columns = [
     {
@@ -23,22 +25,10 @@ const Routes = ({ location }) => {
   ];
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/comments')
-      .then((response) => {
-        if (response.status === 200) {
-          return response;
-        } else {
-          const error = new Error(response.statusText);
-          error.response = response;
-          throw error;
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => setResponse(data.slice(0, 50)))
-      .catch((error) => {
-        console.error(error);
-        setResponse([]);
-      });
+    axios
+      .get('https://jsonplaceholder.typicode.com/comments')
+      .then(res => setData(res.data.slice(0, 50)))
+      .catch(() => setData([]));
   }, []);
 
   return (
@@ -47,7 +37,7 @@ const Routes = ({ location }) => {
         <Container>
           <Link
             className="navbar-brand"
-            replace={'/' === location.pathname}
+            replace={location.pathname === '/'}
             to="/"
           >
             ReactJS
@@ -58,7 +48,7 @@ const Routes = ({ location }) => {
               <Nav.Item>
                 <Link
                   className="nav-link"
-                  replace={'/' === location.pathname}
+                  replace={location.pathname === '/'}
                   to="/"
                 >
                   Home
@@ -67,7 +57,7 @@ const Routes = ({ location }) => {
               <Nav.Item>
                 <Link
                   className="nav-link"
-                  replace={'/table' === location.pathname}
+                  replace={location.pathname === '/table'}
                   to="/table"
                 >
                   DataTable
@@ -83,10 +73,11 @@ const Routes = ({ location }) => {
           <Route
             exact
             path="/table"
-            render={(props) => (
+            render={props => (
               <DataTable
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...props}
-                data={response}
+                data={data}
                 columns={columns}
                 idKey="id"
               />

@@ -1,8 +1,8 @@
 import './Home.scss';
 
+import { Jumbotron } from 'react-bootstrap';
 import logo from '../../assets/logo.svg';
 import Counter from '../counter/Counter';
-import { Jumbotron } from 'react-bootstrap';
 
 export default function App() {
   const linkContent = [
@@ -25,7 +25,7 @@ export default function App() {
         </p>
         <p>
           <span>Learn </span>
-          {linkContent.map((item) => (
+          {linkContent.map(item => (
             <a
               key={item.text}
               className="btn-link"
