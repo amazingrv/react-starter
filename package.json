@@ -61,7 +61,6 @@
     "postcss": "^8.2.12",
     "postcss-loader": "^5.2.0",
     "prettier": "^2.2.1",
-    "progress-webpack-plugin": "^1.0.12",
     "rimraf": "^3.0.2",
     "sass": "^1.32.11",
     "sass-loader": "^11.0.1",

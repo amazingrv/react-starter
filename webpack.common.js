@@ -1,11 +1,11 @@
+const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const ProgressPlugin = require('progress-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+//   .BundleAnalyzerPlugin;
 
 module.exports = {
   output: {
@@ -82,7 +82,7 @@ module.exports = {
     colors: true,
   },
   plugins: [
-    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, quiet: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/favicon.ico',
@@ -90,7 +90,7 @@ module.exports = {
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
-    new ProgressPlugin(),
+    new webpack.ProgressPlugin(),
     // new BundleAnalyzerPlugin(),
   ],
 };

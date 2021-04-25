@@ -12,6 +12,7 @@ module.exports = merge(common, {
   },
   devtool: false,
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         commons: {
