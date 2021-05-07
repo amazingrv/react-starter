@@ -11,7 +11,7 @@ module.exports = merge(common, {
   },
   devtool: 'source-map',
   devServer: {
-    dev: {
+    devMiddleware: {
       publicPath: '/',
     },
     port: 9060,
