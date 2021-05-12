@@ -61,7 +61,7 @@
     "moment-locales-webpack-plugin": "^1.2.0",
     "postcss": "^8.2.15",
     "postcss-loader": "^5.2.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
     "sass": "^1.32.12",
     "sass-loader": "^11.1.0",
