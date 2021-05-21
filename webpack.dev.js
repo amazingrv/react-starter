@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const common = require('./webpack.common');
 
@@ -11,20 +10,16 @@ module.exports = merge(common, {
   },
   devtool: 'source-map',
   devServer: {
+    client: {
+      overlay: false,
+    },
     devMiddleware: {
       publicPath: '/',
     },
     port: 9060,
-    open: true,
+    open: false,
     historyApiFallback: true,
     host: 'localhost',
   },
-  stats: 'none',
-  plugins: [
-    new FriendlyErrorsWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: '[id].css',
-    }),
-  ],
+  stats: 'minimal',
 });

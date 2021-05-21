@@ -7,6 +7,8 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   output: {
     publicPath: '/',
@@ -22,28 +24,10 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-            },
-          },
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           'postcss-loader',
           'sass-loader',
         ],
