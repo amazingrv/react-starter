@@ -22,3 +22,7 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
+
+if (module.hot) {
+  module.hot.accept();
+}
