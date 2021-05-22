@@ -13,13 +13,16 @@
       {
         "runtime": "automatic"
       }
+	],
+	[
+	  "@babel/preset-flow",
+	  {
+		  "allowDeclareFields": true
+	  }
     ]
   ],
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-export-default-from",
     "react-html-attrs",
     "lodash"
   ]
