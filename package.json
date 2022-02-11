@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
+    "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-flow": "^7.13.13",
