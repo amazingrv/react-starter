@@ -1,3 +1,5 @@
+**This template repo is now ARCHIVED, Please use https://github.com/amazingrv/react-starter-pages for integration with Webpack 5 and Github pages**
+
 # react-starter [![Node CI](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml/badge.svg)](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml)
 
 A Simple react starter kit with exposed config and hooks support (for Node version 10.13 and above).
