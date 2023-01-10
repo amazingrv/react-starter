@@ -1,31 +1,34 @@
 const { merge } = require('webpack-merge');
-const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
-  target: 'browserslist',
   output: {
-    filename: 'js/[name].[contenthash].js',
+    filename: '[name].[contenthash].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+    ],
   },
   devtool: false,
   optimization: {
     runtimeChunk: 'single',
+    moduleIds: 'deterministic',
+    removeAvailableModules: false,
     splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
+      chunks: 'all',
     },
     minimizer: [
-      new TerserPlugin({
-        extractComments: false,
-      }),
+      new TerserPlugin(),
       new CssMinimizerPlugin({
         minimizerOptions: {
           preset: 'default',
@@ -34,9 +37,7 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
-    }),
+    new ESLintPlugin({ quiet: true }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
 });

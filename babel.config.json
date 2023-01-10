@@ -4,7 +4,7 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "entry",
-        "corejs": "3.12",
+        "corejs": "3.27",
         "bugfixes": true
       }
     ],
@@ -13,17 +13,7 @@
       {
         "runtime": "automatic"
       }
-	],
-	[
-	  "@babel/preset-flow",
-	  {
-		  "allowDeclareFields": true
-	  }
     ]
   ],
-  "plugins": [
-    "@babel/plugin-proposal-export-default-from",
-    "react-html-attrs",
-    "lodash"
-  ]
+  "plugins": ["react-html-attrs", "lodash"]
 }

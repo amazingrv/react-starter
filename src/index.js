@@ -1,28 +1,19 @@
-import './styles.scss';
+import './styles.css';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import { Suspense } from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import store from './redux/store';
-import Routes from './Routes';
+import React, { Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
 const mountNode = document.querySelector('#app');
+const root = createRoot(mountNode);
 
-ReactDOM.render(
-  <Provider store={store}>
+root.render(
+  <React.StrictMode>
     <Suspense fallback={<div>Loading ...</div>}>
-      <Router>
-        <Routes />
-      </Router>
+      <App />
     </Suspense>
-  </Provider>,
-  mountNode
+  </React.StrictMode>
 );
-
-if (module.hot) {
-  module.hot.accept();
-}
