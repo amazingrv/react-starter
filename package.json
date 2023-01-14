@@ -15,9 +15,7 @@
   "dependencies": {
     "core-js": "^3.21.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.1",
-    "regenerator-runtime": "^0.13.9"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
