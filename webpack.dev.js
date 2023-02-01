@@ -1,40 +1,40 @@
-const { merge } = require('webpack-merge');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('@nuxt/friendly-errors-webpack-plugin');
-const common = require('./webpack.common');
+const { merge } = require("webpack-merge");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("@nuxt/friendly-errors-webpack-plugin");
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
-  mode: 'development',
+  mode: "development",
   output: {
-    filename: '[name].js',
+    filename: "[name].js",
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          plugins: ['react-refresh/babel'],
+          plugins: ["react-refresh/babel"],
         },
       },
       {
         test: /\.css$/i,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 1,
             },
           },
-          'postcss-loader',
+          "postcss-loader",
         ],
       },
     ],
   },
-  devtool: 'eval-cheap-source-map',
+  devtool: "eval-cheap-source-map",
   devServer: {
     static: false,
     port: 8080,
@@ -47,7 +47,7 @@ module.exports = merge(common, {
     new ReactRefreshWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new ESLintPlugin({
-      extensions: ['js', 'jsx'],
+      extensions: ["js", "jsx"],
       fix: true,
       quiet: true,
       threads: true,
