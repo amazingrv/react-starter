@@ -1,49 +1,49 @@
-const { merge } = require("webpack-merge");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const common = require("./webpack.common");
+const { merge } = require('webpack-merge');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
-  mode: "production",
+  mode: 'production',
   output: {
-    filename: "[name].[contenthash].js",
+    filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
             },
           },
-          "postcss-loader",
+          'postcss-loader',
         ],
       },
     ],
   },
   devtool: false,
   optimization: {
-    runtimeChunk: "single",
-    moduleIds: "deterministic",
+    runtimeChunk: 'single',
+    moduleIds: 'deterministic',
     removeAvailableModules: false,
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
+          name: 'vendors',
+          chunks: 'all',
         },
       },
     },
@@ -51,13 +51,13 @@ module.exports = merge(common, {
       new TerserPlugin({ minify: TerserPlugin.swcMinify }),
       new CssMinimizerPlugin({
         minimizerOptions: {
-          preset: "default",
+          preset: 'default',
         },
       }),
     ],
   },
   plugins: [
-    new ESLintPlugin({ extensions: ["js", "jsx"], quiet: true, threads: true }),
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], quiet: true, threads: true }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
 });
