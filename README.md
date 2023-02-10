@@ -1,6 +1,6 @@
 # react-starter [![Node CI](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml)
 
-A Simple react starter kit with exposed config and hooks support (for Node version 14.15 and above).
+A Simple react starter kit with exposed config and hooks support (for Node  16 LTS and above).
 
 Supports client-side routing, ReduxJS, eslint with recommended lint rules, prettier and other best practices supported OOB
 
