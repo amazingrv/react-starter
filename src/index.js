@@ -1,11 +1,11 @@
-import "./styles.css";
+import './styles.css';
 
-import "core-js/stable";
-import React, { Suspense } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
+import 'core-js/stable';
+import React, { Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-const mountNode = document.querySelector("#app");
+const mountNode = document.querySelector('#app');
 const root = createRoot(mountNode);
 
 root.render(
