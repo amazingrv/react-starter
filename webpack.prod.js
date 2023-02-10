@@ -57,7 +57,11 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new ESLintPlugin({ extensions: ['js', 'jsx'], quiet: true, threads: true }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+      quiet: false,
+      threads: true,
+    }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
 });
