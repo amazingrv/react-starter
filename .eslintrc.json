@@ -2,7 +2,7 @@
   "parser": "@babel/eslint-parser",
   "rules": {
     "array-callback-return": "error",
-    "eqeqeq": "error",
+    "eqeqeq": ["error", "smart"],
     "lines-between-class-members": ["error", "always"],
     "no-self-compare": "error",
     "no-duplicate-imports": ["error", { "includeExports": true }],
