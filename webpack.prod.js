@@ -60,7 +60,7 @@ module.exports = merge(common, {
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       quiet: false,
-      threads: true,
+      threads: false,
     }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
