@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   output: {
@@ -16,7 +15,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext][query]',
+          filename: 'images/[hash][ext][query]',
         },
       },
     ],
@@ -25,7 +24,7 @@ module.exports = {
     alias: {
       'lodash-es': 'lodash',
     },
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx'],
     fallback: { fs: false },
   },
   performance: {
@@ -36,8 +35,9 @@ module.exports = {
       template: './src/index.html',
       favicon: './src/assets/favicon.ico',
     }),
-    new LodashModuleReplacementPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    new webpack.ProgressPlugin(),
+    new webpack.ProgressPlugin({
+      activeModules: true,
+    }),
   ],
 };
