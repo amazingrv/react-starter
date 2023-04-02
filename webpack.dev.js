@@ -12,11 +12,20 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          plugins: ['react-refresh/babel'],
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'swc-loader',
+          options: {
+            jsc: {
+              transform: {
+                react: {
+                  development: true,
+                  refresh: true,
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -37,7 +46,7 @@ module.exports = merge(common, {
   devtool: 'eval-cheap-module-source-map',
   devServer: {
     static: false,
-    port: 8080,
+    port: 9060,
     hot: true,
     liveReload: false,
     historyApiFallback: true,
@@ -49,8 +58,7 @@ module.exports = merge(common, {
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       fix: true,
-      quiet: true,
-      threads: false,
+      quiet: false,
     }),
   ],
 });

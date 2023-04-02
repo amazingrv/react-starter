@@ -13,9 +13,11 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'swc-loader',
+        },
       },
       {
         test: /\.css$/i,
@@ -48,20 +50,15 @@ module.exports = merge(common, {
       },
     },
     minimizer: [
-      new TerserPlugin({ minify: TerserPlugin.swcMinify }),
+      new TerserPlugin({ minify: TerserPlugin.swcMinify, parallel: false }),
       new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: 'default',
-        },
+        minify: CssMinimizerPlugin.cssoMinify,
+        parallel: false,
       }),
     ],
   },
   plugins: [
-    new ESLintPlugin({
-      extensions: ['js', 'jsx'],
-      quiet: false,
-      threads: false,
-    }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], quiet: false }),
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
 });
