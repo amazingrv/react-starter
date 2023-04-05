@@ -14,19 +14,21 @@ module.exports = merge(common, {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
-        use: {
-          loader: 'swc-loader',
-          options: {
-            jsc: {
-              transform: {
-                react: {
-                  development: true,
-                  refresh: true,
+        use: [
+          {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                transform: {
+                  react: {
+                    development: true,
+                    refresh: true,
+                  },
                 },
               },
             },
           },
-        },
+        ],
       },
       {
         test: /\.css$/i,
