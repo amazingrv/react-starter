@@ -1,18 +1,21 @@
 # react-starter [![Node CI](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/amazingrv/react-starter/actions/workflows/nodejs.yml)
 
-A Simple react starter kit with exposed config and hooks support (for Node  16 LTS and above).
+A simple react starter kit with exposed config and hooks support, running from webpack-dev-server (for Node 16 LTS and above).
 
-Supports client-side routing, ReduxJS, eslint with recommended lint rules, prettier and other best practices supported OOB
+Supports eslint with recommended lint rules, prettier and other best practices supported OOB
 
 Currently supported config:
 
-- exposed configuration for eslint, browserlint, babel, postcss etc.
-- browserlist support with postcss for autoprefixer
-- babel-preset-env, Core-JS 3 Polyfills and other most used babel plugins
-- webpack loaders for eslint, font and images etc.
-- support for css 3
-- lodash, momentjs and respective loaders for tree-shaking support
-- all optimizations applied to production build for minimum size with max performance.
+- [x] configuration for eslint, prettier and webpack
+- [x] browserlist support with autoprefixer using postcss
+- [x] @swc/core and swc-loader for transpiling javascript
+- [x] support for Core-JS 3 polyfills
+- [x] webpack asset modules for svg, font and images etc.
+- [x] support for css modules
+- [x] optimized for development with fast startup and HMR
+- [x] efficient and small production builds
+- [x] webpack tree-shaking with lodash and moment lib optimizations
+- [x] code minification using swc-minify, csso for css and html minify
 
 ## Building and running on localhost
 
@@ -22,24 +25,18 @@ First install dependencies:
 npm install
 ```
 
-To run in hot reloading mode using webpack-dev-server:
+To run in hot reloading mode using express configured with dev server:
 
 ```sh
 npm start
 ```
 
-To create a production build:
+To create a production build (dist folder) with production express server:
 
 ```sh
 npm run build
 ```
 
-To create a development build:
-
-```sh
-npm run build:dev
-```
-
 ## Running
 
-Open the file `dist/index.html` in your browser
+Run `npm start` in dist folder to start running the app
